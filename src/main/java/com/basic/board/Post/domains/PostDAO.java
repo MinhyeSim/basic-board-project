@@ -40,8 +40,8 @@ public class PostDAO {
     @JoinColumn(name = "user_id")
     private UserDAO userDAO;
 
-    @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "postDAO", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("commentId asc") // 댓글 정렬
-    private List<CommentDAO> commentDAOList ;
+    private List<CommentDAO> commentDAOList;
 
 }

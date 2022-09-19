@@ -1,5 +1,7 @@
 package com.basic.board.User.domains;
 
+import com.basic.board.Comment.domains.CommentDAO;
+import com.basic.board.Post.domains.PostDAO;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.springframework.data.repository.cdi.Eager;
@@ -7,6 +9,7 @@ import org.springframework.data.repository.cdi.Eager;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.xml.soap.Text;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -37,4 +40,10 @@ public class UserDAO {
     @Column(length = 50, unique = true)
     @Pattern(regexp = "^(?:\\w+\\.?)*\\w+@(?:\\w+\\.)+\\w+$", message = "이메일 형식이 올바르지 않습니다.")
     private @NotNull String email;
+
+    /*@OneToMany(mappedBy = "posts")
+    private List<PostDAO> postDAOList;
+
+    @OneToMany(mappedBy = "comments")
+    private List<CommentDAO> commentDAOList;*/
 }
