@@ -38,7 +38,7 @@ public class PostDAO {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private UserDAO userDAO;
+    private UserDAO userDAO ;
 
     @OneToMany(mappedBy = "postDAO", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("commentId asc") // 댓글 정렬
