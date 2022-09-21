@@ -4,6 +4,7 @@ package com.basic.board.User.services;
 import com.basic.board.User.domains.Messenger;
 import com.basic.board.User.domains.UserDAO;
 import com.basic.board.User.domains.UserDTO;
+import org.springframework.data.domain.Sort;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -12,7 +13,7 @@ public interface UserService {
 
     //기능명세서(필요한 로직을 작성한다.)
 
-    List<UserDAO> save(UserDTO userDTO);
+    Messenger save(UserDTO userDTO);
 
     Messenger login(UserDTO userDTO);
 
@@ -25,4 +26,6 @@ public interface UserService {
     Messenger deleteAll();
 
     List<UserDAO> findAll();
+
+    List<UserDAO> findAll(Sort sort);
 }

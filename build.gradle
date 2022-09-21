@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'com'
+group = 'com.basic-board'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -29,14 +29,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	//implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	//testImplementation 'org.springframework.security:spring-security-test'
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
 	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
-	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	//implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
-	testImplementation group: 'org.springframework.security', name: 'spring-security-test', version: '5.7.1'
+	//testImplementation group: 'org.springframework.security', name: 'spring-security-test', version: '5.7.1'
 	compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'

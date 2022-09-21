@@ -8,7 +8,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true #To beautify or pretty print the SQL
@@ -22,11 +22,6 @@ spring:
       max-request-size: 20MB
       file-size-threshold: 1MB
 
-security:
-  jwt:
-    token:
-      security-key:secret-key
-      expiration-length:3600000
 
 server:
   port: 8080
