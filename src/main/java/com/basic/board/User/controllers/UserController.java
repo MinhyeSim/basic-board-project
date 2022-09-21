@@ -41,9 +41,14 @@ public class UserController {
     public ResponseEntity<Messenger> logout(HttpServletRequest request) {
        return ResponseEntity.ok(userService.logout(request));}
 
-    @PatchMapping(value = "/update") @ResponseBody
+    @PatchMapping(value = "/partialupdate") @ResponseBody
     public void partialUpdate(@RequestBody UserDTO userDTO) throws Exception{
        userService.partialUpdate(userDTO);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Messenger> update(@RequestBody UserDAO userDAO){
+       return ResponseEntity.ok(userService.update(userDAO));
     }
 
     @DeleteMapping(value = "/delete") @ResponseBody

@@ -73,5 +73,10 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
+    @Override
+    public Messenger update(UserDAO userDAO) {
+        return null;
+    }
+
 
 }

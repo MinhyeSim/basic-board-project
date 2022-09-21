@@ -28,4 +28,6 @@ public interface UserService {
     List<UserDAO> findAll();
 
     List<UserDAO> findAll(Sort sort);
+
+    Messenger update(UserDAO userDAO);
 }

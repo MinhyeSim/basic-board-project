@@ -1,9 +1,17 @@
 package com.basic.board.Post.controllers;
 
+import com.basic.board.Post.domains.PostDAO;
+import com.basic.board.Post.domains.PostDTO;
 import com.basic.board.Post.services.PostService;
+import com.basic.board.User.domains.Messenger;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
+
+import java.util.List;
 
 /**
  * packageName: com.basic.board.Post.controllers
@@ -24,5 +32,26 @@ public class PostController {
 
     private final PostService postService;
 
-    
+    @PostMapping("/create")
+    public ResponseEntity<Messenger> save(@RequestBody PostDTO postDTO){
+        return ResponseEntity.ok(postService.save(postDTO));
+    }
+
+    @DeleteMapping(value = "/delete") @ResponseBody
+    public void delete(@RequestBody PostDTO postDTO) throws Exception{
+        postService.delete(postDTO);
+    }
+
+    @GetMapping("/findAll/sort")
+    public ResponseEntity<List<PostDAO>> findAll(Sort sort) {
+        return ResponseEntity.ok(postService.findAll(sort));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Messenger> update(@RequestBody PostDAO postDAO){
+        return ResponseEntity.ok(postService.update(postDAO));
+    }
+
+
+
 }
