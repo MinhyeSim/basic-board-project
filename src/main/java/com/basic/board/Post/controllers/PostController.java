@@ -47,9 +47,9 @@ public class PostController {
         return ResponseEntity.ok(postService.findAll(sort));
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Messenger> update(@RequestBody PostDAO postDAO){
-        return ResponseEntity.ok(postService.update(postDAO));
+    @PutMapping("/modify")
+    public ResponseEntity<Messenger> modify(@RequestBody PostDAO postDAO){
+        return ResponseEntity.ok(postService.modify(postDAO));
     }
 
 

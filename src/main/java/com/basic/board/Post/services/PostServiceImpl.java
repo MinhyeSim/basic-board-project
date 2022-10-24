@@ -50,7 +50,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public Messenger update(PostDAO postDAO) {
+    public Messenger modify(PostDAO postDAO) {
         return null;
     }
 }

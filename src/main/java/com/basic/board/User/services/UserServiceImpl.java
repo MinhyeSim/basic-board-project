@@ -78,22 +78,24 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void delete(UserDTO userDTO) {
-
+        UserDAO user = userRepository.findByUsername(userDTO.getUsername()).orElse(null);
+        userRepository.delete(user);
     }
 
     @Override
     public Messenger deleteAll() {
-        return null;
+        userRepository.deleteAll();
+        return Messenger.builder().message("삭제 완료").build();
     }
 
     @Override
     public List<UserDAO> findAll() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
     public List<UserDAO> findAll(Sort sort) {
-        return null;
+        return userRepository.findAll(sort.by(Sort.Direction.DESC,"username"));
     }
 
     @Override

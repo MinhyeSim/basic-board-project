@@ -27,7 +27,7 @@ public interface PostService {
     List<PostDAO> findAll(Sort sort);
     //List(hash,map)은 컬랙션
 
-    Messenger update(PostDAO postDAO);
+    Messenger modify(PostDAO postDAO);
 
 
 }

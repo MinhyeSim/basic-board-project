@@ -4,8 +4,8 @@ import com.basic.board.User.domains.Messenger;
 import com.basic.board.User.domains.UserDAO;
 import com.basic.board.User.domains.UserDTO;
 import com.basic.board.User.services.UserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +19,7 @@ import java.util.List;
 @RequestMapping("user/")  // 2. 리액트와 매핑 . 도메인
 @RequiredArgsConstructor // 3. 생성자를 구현하기 위한 어노테이션
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@Api(tags="user")
 public class UserController {
 
     private final UserService userService;
@@ -28,7 +29,7 @@ public class UserController {
     //로직은 서비스인플에서만 작성한다
 
    @PostMapping("/join")
-    public ResponseEntity<Messenger> save(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<Messenger> save(@ApiParam("Join User") @RequestBody UserDTO userDTO) {
        return ResponseEntity.ok(userService.save(userDTO));
    }
 
