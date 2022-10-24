@@ -15,7 +15,7 @@ public interface UserService {
 
     Messenger save(UserDTO userDTO);
 
-    Messenger login(UserDTO userDTO);
+    UserDTO login(UserDTO userDTO);
 
     Messenger logout(HttpServletRequest request);
 

@@ -1,14 +1,17 @@
 package com.basic.board.User.services;
 
 
+import com.basic.board.Auth.exception.SecurityRuntimeException;
 import com.basic.board.User.domains.Messenger;
 import com.basic.board.User.domains.UserDAO;
 import com.basic.board.User.domains.UserDTO;
 import com.basic.board.User.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import org.modelmapper.ModelMapper;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -19,6 +22,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
+    private final ModelMapper modelMapper;
 
 
     @Override
@@ -39,8 +44,26 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Messenger login(UserDTO userDTO) {
-        return null;
+    public UserDTO login(UserDTO userDTO) {
+
+        try {
+            UserDTO returnUser = new UserDTO();
+            String username = userDTO.getUsername();
+            UserDAO findUser = userRepository.findByUsername(username).orElse(null);
+            if (findUser != null) {
+                boolean checkPassword = encoder.matches(userDTO.getPassword(), findUser.getPassword());
+                if (checkPassword) {
+                    returnUser = modelMapper.map(findUser, UserDTO.class);
+                    findUser = modelMapper.map(returnUser, UserDAO.class);
+                } else {
+                    String token = "로그인 실패";
+                }
+            } else {
+            }
+            return returnUser;
+        }catch (Exception e){
+            throw new SecurityRuntimeException("유효하지 않은 아이디/비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);
+        }
     }
 
     @Override
