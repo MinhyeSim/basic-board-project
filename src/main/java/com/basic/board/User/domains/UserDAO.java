@@ -1,6 +1,5 @@
 package com.basic.board.User.domains;
 
-import com.basic.board.Comment.domains.CommentDAO;
 import com.basic.board.Post.domains.PostDAO;
 import com.sun.istack.NotNull;
 import lombok.*;

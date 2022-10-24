@@ -1,6 +1,5 @@
 package com.basic.board.Post.domains;
 
-import com.basic.board.Comment.domains.CommentDAO;
 import com.basic.board.User.domains.UserDAO;
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -40,8 +39,5 @@ public class PostDAO {
     @JoinColumn(name = "user_id")
     private UserDAO userDAO ;
 
-    @OneToMany(mappedBy = "postDAO", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @OrderBy("commentId asc") // 댓글 정렬
-    private List<CommentDAO> commentDAOList;
 
 }
